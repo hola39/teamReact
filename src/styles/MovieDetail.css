@@ -1,0 +1,25 @@
+.movie-detail {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 600px;
+  margin: 20px auto;
+  text-align: left;
+}
+
+.movie-detail img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.movie-detail h2 {
+  margin-top: 20px;
+  font-size: 2em;
+}
+
+.movie-detail p {
+  margin: 10px 0;
+  font-size: 1.1em;
+}
