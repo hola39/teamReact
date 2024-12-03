@@ -1,15 +1,16 @@
 import React from 'react';
-import '../styles/DeveloperDetail.css';
+import "../styles/DeveloperDetail.css";
 
 const DeveloperDetail = ({ developer, onBack }) => {
   return (
-    <div className="DeveloperDetail">
+    <div className="developer-detail">
       <button className="back-button" onClick={onBack}>뒤로가기</button>
       <img src={developer.imgSrc} alt={developer.name} className="developer-image" />
       <h2>{developer.name}</h2>
       <p>{developer.description}</p>
+
       {developer.techStack && (
-        <div>
+        <div className="tech-stack">
           <h3>기술 스택</h3>
           <ul>
             {developer.techStack.map((tech, index) => (
@@ -18,8 +19,9 @@ const DeveloperDetail = ({ developer, onBack }) => {
           </ul>
         </div>
       )}
+
       {developer.email && (
-        <div>
+        <div className="contact">
           <h3>연락처</h3>
           <p>이메일: {developer.email}</p>
           {developer.github && (

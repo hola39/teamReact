@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DeveloperDetail from './DeveloperDetail';
 import '../styles/AboutMe.css';
+
 //import profile1 from '../images/profile1.jpg';
 
 const profileData = [
@@ -41,6 +42,7 @@ const AboutMe = () => {
     setSelectedDeveloper(developer);
   };
 
+const AboutMe = ({ profileData, selectedDeveloper, onDeveloperClick, onBack }) => {
   return (
     <div className="AboutMe">
       {!selectedDeveloper ? (
@@ -51,7 +53,7 @@ const AboutMe = () => {
               <div
                 key={profile.id}
                 className="profile-card"
-                onClick={() => handleDeveloperClick(profile)}
+                onClick={() => onDeveloperClick(profile)}
               >
                 <img src={profile.imgSrc} alt={profile.name} className="profile-image" />
                 <h3>{profile.name}</h3>
@@ -61,7 +63,7 @@ const AboutMe = () => {
           </div>
         </>
       ) : (
-        <DeveloperDetail developer={selectedDeveloper} onBack={() => setSelectedDeveloper(null)} />
+        <DeveloperDetail developer={selectedDeveloper} onBack={onBack} />
       )}
     </div>
   );

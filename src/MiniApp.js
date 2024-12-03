@@ -30,7 +30,7 @@ const profileData = [
   },
   {
     id: 3,
-    imgSrc: "https://image.utoimage.com/preview/cp924216/2021/03/202103045666_206.jpg",
+    imgSrc: "https://cdn.openart.ai/uploads/image_kHHFC3OX_1733113844726_raw.jpg",
     name: "김소평",
     description: "안녕하세요! 저는 김소평입니다.",
     techStack: ["HTML", "CSS", "JavaScript (React, Node.js)", "Python, JAVA (SpringMVC, Springboot), GitHub"],

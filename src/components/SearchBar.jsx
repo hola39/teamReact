@@ -1,14 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import "../styles/SearchBar.css";
 
-const SearchBar = ({ setMovies }) => {
-  const [query, setQuery] = useState("");
-
+const SearchBar = ({ query, setSearchQuery, currentPage }) => {
   const handleSearch = () => {
-    // fetch(`https://api.example.com/movies?search=${query}`)
-    //   .then((response) => response.json())
-    //   .then((data) => setMovies(data))
-    //   .catch((error) => console.error("Error searching movies:", error));
+    setSearchQuery(query); // 검색어 상태 업데이트
   };
 
   return (
@@ -16,8 +11,8 @@ const SearchBar = ({ setMovies }) => {
       <input
         type="text"
         value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search for a movie..."
+        onChange={(e) => setSearchQuery(e.target.value)} // 검색어 상태 업데이트
+        placeholder={`Search for a ${currentPage === "movies" ? "movie" : "book"}...`}
       />
       <button onClick={handleSearch}>Search</button>
     </div>
