@@ -1,13 +1,43 @@
 import React, { useEffect, useState } from "react";
-
+import AboutMe from "./components/AboutMe";
 import MovieList from "./components/MovieList";
 import MovieDetail from "./components/MovieDetail";
-import BookList from "./components/BookList";  // 추가된 BookList
-import BookDetail from "./components/BookDetail";  // 추가된 BookDetail
+import BookList from "./components/BookList";
+import BookDetail from "./components/BookDetail"; 
 import SearchBar from "./components/SearchBar";
 import Menu from "./components/Menu";
 import "./styles/App.css";
-import AboutMe from "./components/AboutMe";
+
+const profileData = [
+  {
+    id: 1,
+    imgSrc: "https://avatars.githubusercontent.com/u/164981501?s=400&u=469700f930205fddd2e2305e6619335e96c88363&v=4",
+    name: "김영욱",
+    description: "안녕하세요! 저는 김영욱입니다.",
+    techStack: ["HTML", "CSS", "JavaScript (React, Node.js)", "Python, JAVA (SpringMVC, Springboot), GitHub"],
+    email: "2401340041@office.kopo.ac.kr",
+    github: "https://github.com/ai-comic",
+
+  },
+  {
+    id: 2,
+    imgSrc: "https://avatars.githubusercontent.com/u/183576284?v=4",
+    name: "류경민",
+    description: "안녕하세요! 저는 류경민입니다.",
+    techStack: ["HTML", "CSS", "JavaScript (React, Node.js)", "Python, JAVA (SpringMVC, Springboot), GitHub"],
+    email: "2401340039@office.kopo.ac.kr",
+    github: "https://github.com/hola39",
+  },
+  {
+    id: 3,
+    imgSrc: "https://cdn.openart.ai/uploads/image_kHHFC3OX_1733113844726_raw.jpg",
+    name: "김소평",
+    description: "안녕하세요! 저는 김소평입니다.",
+    techStack: ["HTML", "CSS", "JavaScript (React, Node.js)", "Python, JAVA (SpringMVC, Springboot), GitHub"],
+    email: "2401340096@office.kopo.ac.kr",
+    github: "https://github.com/so-pyeong",
+  },
+];
 
 const movieData = [
   {
@@ -24,7 +54,6 @@ const movieData = [
     description:
       "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
   },
-  // 추가 영화 데이터
   {
     id: 3,
     title: "Gladiator",
@@ -51,7 +80,7 @@ const bookData = [
   {
     id: 2,
     title: "Harry Potter and the Chamber of Secrets",
-    poster: "https://m.media-amazon.com/images/I/818umIdoruL.jpg",
+    poster: "https://m.media-amazon.com/images/I/915KEvGiX-L._AC_UF894,1000_QL80_.jpg",
     description: "Harry returns to Hogwarts for his second year and faces a dark force.",
   },
   {
@@ -69,53 +98,87 @@ const bookData = [
 ];
 
 const MiniApp = () => {
-  const [movies, setMovies] = useState([]);
-  const [books, setBooks] = useState([]);
+  const [selectedDeveloper, setSelectedDeveloper] = useState(null);
+  const [movies, setMovies] = useState(movieData);
+  const [books, setBooks] = useState(bookData);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [selectedBook, setSelectedBook] = useState(null);
-  const [currentPage, setCurrentPage] = useState("movies");
+  const [currentPage, setCurrentPage] = useState("about");
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    setMovies(movieData);
-    setBooks(bookData); // 책 데이터 설정
-  }, []);
+    if (currentPage === "movies") {
+      setMovies(movieData);
+      setSelectedMovie(null);
+    } else if (currentPage === "books") {
+      setBooks(bookData);
+      setSelectedBook(null);
+    }
+  }, [currentPage]);
+
+  const handleDeveloperClick = (developer) => {
+    setSelectedDeveloper(developer);
+  };
+  
+  const handleBack = () => {
+    setSelectedDeveloper(null);
+    setSelectedMovie(null);
+    setSelectedBook(null);
+  };
 
   const handleMovieSelect = (movie) => {
     setSelectedMovie(movie);
-    setSelectedBook(null); // 책 선택 초기화
+    setSelectedBook(null);
   };
 
   const handleBookSelect = (book) => {
     setSelectedBook(book);
-    setSelectedMovie(null); // 영화 선택 초기화
+    setSelectedMovie(null);
   };
 
   const handleMenuClick = (page) => {
     setCurrentPage(page);
-    setSelectedMovie(null);
-    setSelectedBook(null);
+    setSearchQuery("");
+    handleBack();
+  };
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+    if (query.trim() === "") {
+      setMovies(movieData);
+      setBooks(bookData);
+    } else {
+      if (currentPage === "movies") {
+        setMovies(movieData.filter((movie) => movie.title.toLowerCase().includes(query.toLowerCase())));
+      } else if (currentPage === "books") {
+        setBooks(bookData.filter((book) => book.title.toLowerCase().includes(query.toLowerCase())));
+      }
+    }
   };
 
   return (
     <div className="App">
       <Menu onMenuClick={handleMenuClick} />
-      <SearchBar setMovies={setMovies} />
+      {currentPage !== "about" && (
+        <SearchBar query={searchQuery} setSearchQuery={handleSearch} currentPage={currentPage} />
+      )}
 
-      {currentPage === "about" && <AboutMe />}
+      {currentPage === "about" && (
+        <AboutMe 
+          profileData={profileData}
+          selectedDeveloper={selectedDeveloper}
+          onDeveloperClick={handleDeveloperClick}
+          onBack={handleBack}
+        />
+      )}
 
-      {currentPage === "movies" &&
-        (selectedMovie ? (
-          <MovieDetail movie={selectedMovie} />
-        ) : (
-          <MovieList movies={movies} onMovieSelect={handleMovieSelect} />
-        ))}
+      {currentPage === "movies" && (
+        selectedMovie ? <MovieDetail movie={selectedMovie} onBack={handleBack} /> : <MovieList movies={movies} onMovieSelect={handleMovieSelect} />
+      )}
 
-      {currentPage === "books" &&
-        (selectedBook ? (
-          <BookDetail book={selectedBook} /> // BookDetail을 표시
-        ) : (
-          <BookList books={books} onBookSelect={handleBookSelect} /> // BookList를 표시
-        ))}
+      {currentPage === "books" && (
+        selectedBook ? <BookDetail book={selectedBook} onBack={handleBack} /> : <BookList books={books} onBookSelect={handleBookSelect} />
+      )}
     </div>
   );
 };
