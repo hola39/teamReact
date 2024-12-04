@@ -30,7 +30,7 @@ const profileData = [
   },
   {
     id: 3,
-    imgSrc: "https://image.utoimage.com/preview/cp924216/2021/03/202103045666_206.jpg",
+    imgSrc: "https://private-user-images.githubusercontent.com/170308792/391440373-138fe034-8c88-465c-a834-f6fdf5df1f8b.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzMxMjI5NzEsIm5iZiI6MTczMzEyMjY3MSwicGF0aCI6Ii8xNzAzMDg3OTIvMzkxNDQwMzczLTEzOGZlMDM0LThjODgtNDY1Yy1hODM0LWY2ZmRmNWRmMWY4Yi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMjAyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTIwMlQwNjU3NTFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01OGY5NjdmOWExYjcyMjI4N2I5N2EzNDEyNzkzYzkzODY5ZDQyZmZmODJkNGM1M2VhODFhYzQyOGVjNWZmYThkJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.zt2SyD9btHhqOJ2HNoTAjL1qQ3W2P9wDk741OT31X6k",
     name: "김소평",
     description: "안녕하세요! 저는 김소평입니다.",
     techStack: ["HTML", "CSS", "JavaScript (React, Node.js)", "Python, JAVA (SpringMVC, Springboot), GitHub"],
