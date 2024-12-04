@@ -21,12 +21,12 @@ const profileData = [
   },
   {
     id: 2,
-    imgSrc: "https://e1.pxfuel.com/desktop-wallpaper/529/975/desktop-wallpaper-untitled-in-2020-aesthetic-stitch.jpg",
+    imgSrc: "https://avatars.githubusercontent.com/u/183576284?v=4",
     name: "류경민",
     description: "안녕하세요! 저는 류경민입니다.",
     techStack: ["HTML", "CSS", "JavaScript (React, Node.js)", "Python, JAVA (SpringMVC, Springboot), GitHub"],
     email: "2401340039@office.kopo.ac.kr",
-    github: "생성중",
+    github: "https://github.com/hola39",
   },
   {
     id: 3,
