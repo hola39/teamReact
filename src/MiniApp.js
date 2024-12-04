@@ -21,7 +21,7 @@ const profileData = [
   },
   {
     id: 2,
-    imgSrc: "https://postfiles.pstatic.net/MjAyNDEyMDRfMjkw/MDAxNzMzMjc3MDE5OTU3.V1xMRP3Z195AknPeFnUA8Mi_mX3g-kTkNbVz4Lk-mFsg.WbRoxO-hJ5Sv7yITvyPByaCD3YxndHHzLGG6u4bhlP4g.PNG/183576284.png?type=w966",
+    imgSrc: "https://github.com/hola39/teamReact/blob/main/183576284.png?raw=true",
     name: "류경민",
     description: "안녕하세요! 저는 류경민입니다.",
     techStack: ["HTML", "CSS", "JavaScript (React, Node.js)", "Python, JAVA (SpringMVC, Springboot), GitHub"],
